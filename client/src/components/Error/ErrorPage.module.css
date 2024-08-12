@@ -1,0 +1,98 @@
+.errorPage {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(39 221 222);
+    display: flex;
+    justify-content: center;
+}
+
+.not-found-page {
+    margin-top: 80px;
+    height: 600px;
+    aspect-ratio: 1/1;
+    background-image: url('../../assets/cute_sushi.jpg');
+    background-position: center;
+    background-size: cover;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(4, 31, 31, 0.315);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.not-found-page-container {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.not-found-page-container p {
+    font-size: 24px;
+    color: #440909;
+}
+
+.not-found-page-container p a {
+    color: #eb0a0a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.not-found-page-container p a:hover {
+    text-decoration: underline;
+}
+
+.not-found-page-container>p {
+    margin-top: 100px;
+    width: 80%;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 781px){
+
+    .not-found-page {
+        margin-top: 300px;
+        height: 80vw;
+        aspect-ratio: 1/1;
+    }
+
+    .not-found-page-container {
+        display: flex;
+        justify-content: center;
+        top: 0px;
+        width: 100%;
+        padding: 0 60px;
+        text-align: center;
+    }
+    
+    
+    .not-found-page-container p {
+        font-size: 20px;
+    }
+    
+    .not-found-page-container p a:hover {
+        text-decoration: none;
+    }
+    
+    .not-found-page-container>p {
+        width: 100%;
+    }
+
+
+}

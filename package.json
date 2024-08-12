@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "moment": "^2.30.1",
+    "react-hot-toast": "^2.4.1",
+    "sfcookies": "^1.0.2"
+  }
+}
