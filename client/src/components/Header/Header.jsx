@@ -59,7 +59,6 @@ export default function Header() {
                                 <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '') + ' ' + styles.link}>Регистрация</NavLink>
                             </div>
                         )}
-
                     </div>
                 </nav>
         </header>
