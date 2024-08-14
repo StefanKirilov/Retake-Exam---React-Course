@@ -7,12 +7,14 @@ import shopCar from '../../assets/shop.png'
 import profile from '../../assets/profile_red.png'
 import { useContext, useState } from 'react';
 import AuthContext from '../../contexts/authContext';
+import { useShoppingCart } from '../../contexts/shoppingCartContext';
 
 export default function Header() {
     const [navbar, setNavbar] = useState(false);
     const [isChecked, setCheck] = useState(false);
 
     const { isAuthenticated } = useContext(AuthContext);
+    const { closeCart, openCart, cartQuantity, ordered } = useShoppingCart();
 
     const userChangeHandler = (e) => {
         setCheck(!isChecked);
@@ -42,16 +44,16 @@ export default function Header() {
                     </svg>
                 </label>
                 <nav className={styles.navigation} onClick={() => setCheck(!isChecked)}>
-                    <Link to="/"><img className={styles.logo} src={logo} alt="logo" /></Link>
+                    <Link onClick={closeCart} to="/"><img className={styles.logo} src={logo} alt="logo" /></Link>
                     <h1 className={styles.name}><Link className={styles.name} to='/'>KoShiYam</Link></h1>
                     <div className={styles.menu}>
-                        <NavLink  to="/menu" className={({ isActive }) => (isActive ? styles.active : '') + ' ' + styles.link} >Меню</NavLink>
-                        <NavLink  to='/contacts' className={({ isActive }) => (isActive ? styles.active : '') + ' ' + styles.link}>Контакти</NavLink>
+                        <NavLink onClick={closeCart} to="/menu" className={({ isActive }) => (isActive ? styles.active : '') + ' ' + styles.link} >Меню</NavLink>
+                        <NavLink onClick={closeCart} to='/contacts' className={({ isActive }) => (isActive ? styles.active : '') + ' ' + styles.link}>Контакти</NavLink>
                         {isAuthenticated && (
                             <div className={styles.user}>
-                                <NavLink  to='/favorites' className={({ isActive }) => (isActive ? styles.active : '') + ' ' + styles.link}>Любими</NavLink>
-                                <Link  to="/logout" className={styles.link}>Изход</Link>
-                                <Link  to="/profile"><img className={styles.shopCar} src={profile} alt="profile" /></Link>
+                                <NavLink onClick={closeCart} to='/favorites' className={({ isActive }) => (isActive ? styles.active : '') + ' ' + styles.link}>Любими</NavLink>
+                                <Link onClick={() => { closeCart(); ordered() }} to="/logout" className={styles.link}>Изход</Link>
+                                <Link onClick={closeCart} to="/profile"><img className={styles.shopCar} src={profile} alt="profile" /></Link>
                             </div>)}
                         {!isAuthenticated && (
                             <div className={styles.guest}>
@@ -59,6 +61,14 @@ export default function Header() {
                                 <NavLink to='/register' className={({ isActive }) => (isActive ? styles.active : '') + ' ' + styles.link}>Регистрация</NavLink>
                             </div>
                         )}
+                        <Link onClick={openCart}>
+                            <img className={styles.shopCar} src={shopCar} alt="shopCar" />
+                            {(cartQuantity > 0) ?
+                                <p className={styles.quantity}>{cartQuantity}</p>
+                                :
+                                <p></p>
+                            }
+                        </Link>
                     </div>
                 </nav>
         </header>
