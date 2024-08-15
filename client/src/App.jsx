@@ -13,6 +13,7 @@ import Catalog from './components/Catalog/Catalog';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Profile from './components/Profile/Profile';
+import Favorites from './components/Favorites/Favorites';
 import Contacts from './components/Contacts/Contacts';
 import Logout from './components/Logout/Logout';
 import Sushi from './components/Sushi/Sushi';
@@ -59,6 +60,7 @@ function App() {
             <Route path="/error" element={<ErrorPage />} />
 
             <Route element={<AuthGuard />}>
+              <Route path="/favorites" element={<Favorites />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/logout" element={<Logout />} />
             </Route>
