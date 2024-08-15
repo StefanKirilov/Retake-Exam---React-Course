@@ -31,14 +31,14 @@ npm install
 Navigate to the server directory and start the Express server:
 
 cd server
-npm start
+npm run start
 The server will run on http://localhost:3030.
 
 ### Running the Client
 Open a new terminal, navigate to the client directory, and start the React application:
 
 cd client
-npm start
+npm run dev
 The client will run on http://localhost:5173.
 
 ### License
